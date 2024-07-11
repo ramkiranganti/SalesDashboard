@@ -1,0 +1,45 @@
+﻿@using SalesDashboard.Models
+@model SalesViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>    
+    @if (Model.Sales.Count() > 0)
+    {
+        <hr />
+        <table cellpadding="0" cellspacing="0" style="width:100%">
+            <tr>
+                <th>Segment</th>
+                <th>Country</th>
+                <th>Product</th>
+                <th>Discount</th>
+                <th>Units Sold</th>
+                <th>Manufacturing Price</th>
+                <th>Sale Price</th>
+                <th>Date</th>                
+            </tr>
+            @foreach (var sale in Model.Sales)
+            {
+                <tr>
+                    <td>@sale.Segment</td>
+                    <td>@sale.Country</td>
+                    <td>@sale.Product</td>
+                    <td>@sale.Discount</td>
+                    <td>@sale.UnitsSold</td>
+                    <td>£@sale.ManufacturingPrice</td>
+                    <td>£@sale.SalePrice</td>
+                    <td>@sale.SaleDate?.ToString("MM/dd/yyyy")</td>
+                </tr>
+            }
+        </table>
+    }
+</body>
+</html>
